@@ -1,0 +1,84 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-shadow: #b61717;
+    font-size: 80px;
+    color: #3B4EFC;
+}
+
+.imgContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .avatar {
+
+} */
+
+.loginContainer {
+    height: 40vh;
+    width: 40vw;
+    align-self: center;
+    background-color: #ccc;
+    padding: 30px 30px;
+    border: #3B4EFC solid 3px;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #3B4EFC;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+}
+
+.loginButton {
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    width: 100%;
+}
+
+.cancelButton1 {
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    width: 100%;
+}
+  
+.signUpButton {
+  height: 35px;
+  width: 8%;
+  border-radius: 40px;
+  margin: 10px;
+}
+
+img.avatar {
+  width: 20%;
+  border-radius: 50%;
+  align-self: center;
+}
