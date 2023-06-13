@@ -4,13 +4,13 @@ const { User, Task } = require("../models")
 
 const main = async () => {
 
-  const userOne = await User.find({ username: 'Bryan'})
+  const user1 = await User.find({ username: 'Bryan'})
 
     const task1 =  new Task({
         name: 'Plan BBQ',
         dueDate: 'Sunday June 17th',
         isCompleted: false,
-        nameOfUser: userOne._id
+        nameOfUser: user1._id
       })
     await task1.save()
       
@@ -18,7 +18,7 @@ const main = async () => {
       name: 'Buy Groceries',
       dueDate: 'Friday June 15th',
       isCompleted: true,
-      nameOfUser: userOne._id
+      nameOfUser: user1._id
     })
     await task2.save()
 
@@ -26,7 +26,7 @@ const main = async () => {
         name: 'Pack Bags',
         dueDate: 'Wednesday August 2nd',
         isCompleted: false,
-        nameOfUser: userOne._id
+        nameOfUser: user1._id
       })
     await task3.save()
 
@@ -34,7 +34,7 @@ const main = async () => {
         name: 'Project 2',
         dueDate: 'Friday June 16th',
         isCompleted: false,
-        nameOfUser: userOne._id
+        nameOfUser: user1._id
       })
     await task4.save()
 
@@ -42,7 +42,7 @@ const main = async () => {
         name: `Buy Father's Day Gift`,
         dueDate: 'Friday June 16th',
         isCompleted: false,
-        nameOfUser: userOne._id
+        nameOfUser: user1._id
       })
     await task5.save()
 }

@@ -7,7 +7,7 @@ Router.get('/:id', taskController.getTaskById)
 
 Router.post('/', taskController.createTask)
 
-Router.put('/', taskController.updateTask)
+Router.put('/:id', taskController.updateTask)
 
 Router.delete('/:id', taskController.deleteTask)
 

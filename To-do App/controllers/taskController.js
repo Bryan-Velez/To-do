@@ -32,13 +32,15 @@ const createTask= async (req, res) => {
 
 const updateTask = async (req, res) => {
     try {
-        const { id, whatToUpdate, update } = req.query
-        const updatedTask = await Task.findByIdAndUpdate(  id, { [whatToUpdate]: update }, { new: true } )
-        if(!updatedTask) throw Error('Task not updated')
-        res.status(201).json(updatedTask)
-    } catch (e) {
-        console.log(e)
-        res.status(500).send('Task not updated')
+        const { id } = req.params
+        const updatedTask = await Task.findByIdAndUpdate(id, req.body, { new: true })
+        if(updatedTask) { 
+            return res.status(200).json(updatedTask) 
+        } 
+        throw new Error('Task not updated')
+    } catch (error) {
+        console.log(error)
+        return res.status(500).send(error.message)
     }
 }
 
