@@ -3,41 +3,59 @@
     margin: 0;
 }
 
-html {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 header {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #3b4efc;
+    padding: 20px;
+    width: 100%;
+    
 }
+
+img.checkbox {
+  border: solid #787878 5px;
+  border-radius: 20px;
+  width: 5%;
+}
+
 
 h1 {
-    text-shadow: #b61717;
+    text-shadow: 0 0 10px 10px #b61717;
     font-size: 80px;
-    color: #3B4EFC;
+    color: #ffffff;
+    margin: 0 30px;
+    text-shadow: 5px 5px #787878;
+    background-color: 787878;
 }
 
-.imgContainer {
+h4 {
+  color: white;
+}
+
+.loginImgContainer {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* .avatar {
-
-} */
+img.clipboard {
+  width: 20%;
+  border-radius: 50%;
+  align-self: center;
+  background-color: white;
+  border: #3B4EFC solid 3px;
+}
 
 .loginContainer {
     height: 40vh;
     width: 40vw;
-    align-self: center;
     background-color: #ccc;
-    padding: 30px 30px;
+    padding: 120px 50px;
     border: #3B4EFC solid 3px;
+    position: relative;
+    left: 500px;
+    top: 40px;
 }
 
 input[type=text], input[type=password] {
@@ -56,6 +74,13 @@ button {
     width: 100%;
 }
 
+.signUpButton {
+  height: 35px;
+  width: 8%;
+  border-radius: 40px;
+  margin: 10px;
+}
+
 .loginButton {
     padding: 14px 20px;
     margin: 8px 0;
@@ -70,15 +95,5 @@ button {
     width: 100%;
 }
   
-.signUpButton {
-  height: 35px;
-  width: 8%;
-  border-radius: 40px;
-  margin: 10px;
-}
 
-img.avatar {
-  width: 20%;
-  border-radius: 50%;
-  align-self: center;
-}
+

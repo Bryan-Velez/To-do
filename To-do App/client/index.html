@@ -13,7 +13,7 @@
 
 <body>
     <header>
-        <img class="clipboard" src="assests/Checkbox Logo.jpeg" alt="">
+        <img class="checkbox" src="assests/Checkbox Logo.jpeg" alt="">
         <h1>Get it Done!</h1>
         <h4>Get organized. Get things done.</h4>
         <button class="signUpButton">Sign Up</button>
@@ -21,11 +21,13 @@
 
     <div class="loginContainer">
         <form action="action_page.php" method="post">
-            <div class="imgContainer">
-              <img src="assests/Clipboard.png" alt="Avatar" class="avatar">
+          
+            <div class="loginImgContainer">
+              <img class="clipboard" src="assests/Clipboard.png" alt="Avatar" >
             </div>
           
             <div class="container">
+
               <label for="username"><b>Username</b></label>
               <input type="text" placeholder="Enter Username" name="username" required>
           
@@ -33,15 +35,15 @@
               <input type="password" placeholder="Enter Password" name="password" required>
           
               <button type="submit" class="loginButton">Login</button>
+
               <label>
                 <input type="checkbox" checked="checked" name="rememberMe"> Remember me
               </label>
-            </div>
-          
-            <!-- <div class="container" style="background-color:#c6c6c6"> -->
+
               <button type="button" class="cancelButton1">Cancel</button>
               <span class="forgotPassword">Forgot <a href="#">password?</a></span>
-            <!-- </div> -->
+            </div>
+            
           </form>
         
     </div>

@@ -1,11 +1,12 @@
 const { Schema } = require('mongoose')
 
-const task1Schema = new Schema(
+const taskSchema = new Schema(
     {
         name: {type: String, required: true},
-        date: {type: String, require: true},
-        time: {type: String, require: true}
+        dueDate: {type: String, require: true},
+        isCompleted: {type: Boolean, require: true},
+        nameOfUser: {type: Schema.Types.ObjectId, ref: 'User'}
     },
     {timestamps: true}
 )
-module.exports = task1Schema
+module.exports = taskSchema
