@@ -4,7 +4,7 @@ const { User, Task } = require("../models")
 
 const main = async () => {
 
-  const user1 = await User.find({ username: 'Bryan'})
+  const user1 = await User.findOne({ username: 'Bryan'})
 
     const task1 =  new Task({
         name: 'Plan BBQ',

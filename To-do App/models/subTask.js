@@ -4,8 +4,8 @@ const Schema = mongoose.Schema
 const subtaskSchema = new Schema(
     {
         name: {type: String, required: true},
-        isCompleted: {type: Boolean, require: true},
-        nameOfTask: {type: Schema.Types.ObjectId, ref: 'Task'}
+        isCompleted: {type: Boolean, required: true},
+        nameOfTask: {type: Schema.Types.ObjectId, ref: 'Task', required: true}
     },
     {timestamps: true}
 )

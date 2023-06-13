@@ -32,16 +32,23 @@ const createUser = async (req, res) => {
     }
 }
 
+
+
 const updateUser = async (req, res) => {
     try {
-        const user = await User.findByIdAndUpdate(req.query.id, {[req.query.whatToUpdate]: req.query.update})
-        if(!user) throw Error('User not updated')
-        res.status(201).json(user)
-    } catch (e) {
-        console.log(e)
-        res.status(500).send('User not updated')
+        const { id } = req.params
+        const updatedUser = await User.findByIdAndUpdate(id, req.body, { new: true })
+        if(updatedUser) { 
+            return res.status(200).json(updatedUser) 
+        } 
+        throw new Error('User not updated')
+    } catch (error) {
+        console.log(error)
+        return res.status(500).send(error.message)
     }
 }
+
+
 
 const deleteUser = async (req, res) => {
     try {

@@ -23,7 +23,7 @@ const createSubtask= async (req, res) => {
         const subtask = await new Subtask(req.query)
         await subtask.save()
         if(!subtask) throw Error('Subtask not created')
-        return res.status(201).json(task)
+        return res.status(201).json(subtask)
     } catch (e) {
         console.log(e)
         res.status(500).send("Subtask not created")
@@ -32,12 +32,15 @@ const createSubtask= async (req, res) => {
 
 const updateSubtask = async (req, res) => {
     try {
-        const subtask = await Subtask.findByIdAndUpdate(req.query.id, {[req.query.whatToUpdate]: req.query.update})
-        if(!subtask) throw Error('Subtask not updated')
-        res.status(201).json(subtask)
-    } catch (e) {
-        console.log(e)
-        res.status(500).send('Subtask not updated')
+        const { id } = req.params
+        const updatedSubtask = await Subtask.findByIdAndUpdate(id, req.body, { new: true })
+        if(updatedSubtask) { 
+            return res.status(200).json(updatedSubtask) 
+        } 
+        throw new Error('Subtask not updated')
+    } catch (error) {
+        console.log(error)
+        return res.status(500).send(error.message)
     }
 }
 

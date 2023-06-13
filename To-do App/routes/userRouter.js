@@ -7,7 +7,7 @@ Router.get('/:id', userController.getUserById)
 
 Router.post('/', userController.createUser)
 
-Router.put('/', userController.updateUser)
+Router.put('/:id', userController.updateUser)
 
 Router.delete('/:id', userController.deleteUser)
 

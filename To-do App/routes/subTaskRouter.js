@@ -7,7 +7,7 @@ Router.get('/:id', subtaskController.getSubtaskById)
 
 Router.post('/', subtaskController.createSubtask)
 
-Router.put('/', subtaskController.updateSubtask)
+Router.put('/:id', subtaskController.updateSubtask)
 
 Router.delete('/:id', subtaskController.deleteSubtask)
 
