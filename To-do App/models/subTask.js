@@ -1,6 +1,6 @@
 const { Schema } = require('mongoose')
 
-const subTaskSchema = new Schema(
+const subtaskSchema = new Schema(
     {
         name: {type: String, required: true},
         isCompleted: {type: Boolean, require: true},
@@ -8,4 +8,4 @@ const subTaskSchema = new Schema(
     },
     {timestamps: true}
 )
-module.exports = subTaskSchema
+module.exports = subtaskSchema

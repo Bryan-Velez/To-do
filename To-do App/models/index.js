@@ -1,14 +1,14 @@
 const mongoose = require('mongoose')
 const userSchema = require('./user')
 const taskSchema = require('./task')
-const subTaskSchema = require('./subtask')
+const subtaskSchema = require('./subtask')
 
 const User = mongoose.model('User', userSchema)
 const Task = mongoose.model('Task', taskSchema)
-const SubTask = mongoose.model('SubTask', subTaskSchema)
+const Subtask = mongoose.model('Subtask', subtaskSchema)
 
 module.exports = {
     User,
     Task,
-    SubTask
+    Subtask
   }

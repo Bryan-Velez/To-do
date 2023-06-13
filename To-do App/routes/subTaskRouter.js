@@ -1,8 +1,15 @@
 const Router = require('express').Router()
-const subTaskController = require('../controllers/subTaskController.js')
+const subtaskController = require('../controllers/subtaskController.js')
 
-Router.get('/', subTaskController.getSubTasks)
+Router.get('/', subtaskController.getSubtasks)
 
-Router.get('/:id', subTaskController.getSubTaskById)
+Router.get('/:id', subtaskController.getSubtaskById)
+
+Router.post('/', subtaskController.createSubtask)
+
+Router.put('/', subtaskController.updateSubtask)
+
+Router.delete('/:id', subtaskController.deleteSubtask)
+
 
 module.exports = Router

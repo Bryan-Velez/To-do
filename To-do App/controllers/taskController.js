@@ -23,14 +23,40 @@ const createTask= async (req, res) => {
         const task = await new Task(req.query)
         await task.save()
         if(!task) throw Error('Task not created')
-        return res.status(201).json(model)
+        return res.status(201).json(task)
     } catch (e) {
         console.log(e)
         res.status(500).send("Task not created")
     }
 }
 
+const updateTask = async (req, res) => {
+    try {
+        const task = await Task.findByIdAndUpdate(req.query.id, {[req.query.whatToUpdate]: req.query.update})
+        if(!task) throw Error('Task not updated')
+        res.status(201).json(task)
+    } catch (e) {
+        console.log(e)
+        res.status(500).send('Task not updated')
+    }
+}
+
+const deleteTask = async (req, res) => {
+    try { 
+        const { id } = req.params
+        const task = await Task.findByIdAndDelete(id)
+        if(!task) throw Error('Task not deleted')
+        res.status(200).json(task)
+    } catch (e) {
+        console.log(e)
+        res.status(500).send('Taks not deleted')
+    }
+}
+
 module.exports = {
     getTasks,
-    getTaskById
+    getTaskById,
+    createTask,
+    updateTask,
+    deleteTask
 }
