@@ -1,7 +1,8 @@
 * {
     padding: 0;
     margin: 0;
-}
+    font-family: 'EB Garamond', serif;
+  }
 
 header {
     display: flex;
@@ -10,6 +11,9 @@ header {
     background-color: #3b4efc;
     padding: 20px;
     width: 100%;
+    border-bottom: #ccc solid 5px;
+    filter: drop-shadow(0px 10px 6px #787878);
+
     
 }
 
@@ -25,18 +29,22 @@ h1 {
     font-size: 80px;
     color: #ffffff;
     margin: 0 30px;
-    text-shadow: 5px 5px #787878;
+    text-shadow: -5px -5px #787878;
     background-color: 787878;
+
 }
 
 h4 {
   color: white;
+  filter: drop-shadow(-20px -7px #787878);
 }
 
 .loginImgContainer {
   display: flex;
   align-items: center;
   justify-content: center;
+  filter: drop-shadow(10px 10px 10px #787878);
+
 }
 
 img.clipboard {
@@ -53,9 +61,12 @@ img.clipboard {
     background-color: #ccc;
     padding: 120px 50px;
     border: #3B4EFC solid 3px;
+    filter: drop-shadow(30px 30px 20px #787878);
+   
     position: relative;
     left: 500px;
     top: 40px;
+    
 }
 
 input[type=text], input[type=password] {

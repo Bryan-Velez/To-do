@@ -20,10 +20,10 @@ const getTaskById = async (req,res) => {
 
 const createTask= async (req, res) => {
     try {
-        const task = await new Task(req.query)
-        await task.save()
-        if(!task) throw Error('Task not created')
-        return res.status(201).json(task)
+        const createdTask = await new Task(req.query)
+        await createdTask.save()
+        if(!createdTask) throw Error('Task not created')
+        return res.status(201).json(createdTask)
     } catch (e) {
         console.log(e)
         res.status(500).send("Task not created")
@@ -32,9 +32,10 @@ const createTask= async (req, res) => {
 
 const updateTask = async (req, res) => {
     try {
-        const task = await Task.findByIdAndUpdate(req.query.id, {[req.query.whatToUpdate]: req.query.update})
-        if(!task) throw Error('Task not updated')
-        res.status(201).json(task)
+        const { id, whatToUpdate, update } = req.query
+        const updatedTask = await Task.findByIdAndUpdate(  id, { [whatToUpdate]: update }, { new: true } )
+        if(!updatedTask) throw Error('Task not updated')
+        res.status(201).json(updatedTask)
     } catch (e) {
         console.log(e)
         res.status(500).send('Task not updated')
@@ -44,9 +45,9 @@ const updateTask = async (req, res) => {
 const deleteTask = async (req, res) => {
     try { 
         const { id } = req.params
-        const task = await Task.findByIdAndDelete(id)
-        if(!task) throw Error('Task not deleted')
-        res.status(200).json(task)
+        const deletedTask = await Task.findByIdAndDelete(id)
+        if(!deletedTask) throw Error('Task not deleted')
+        res.status(200).json(deletedTask)
     } catch (e) {
         console.log(e)
         res.status(500).send('Taks not deleted')
