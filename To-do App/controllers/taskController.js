@@ -20,7 +20,7 @@ const getTaskById = async (req,res) => {
 
 const createTask= async (req, res) => {
     try {
-        const createdTask = await new Task(req.query)
+        const createdTask = await new Task(req.body)
         await createdTask.save()
         if(!createdTask) throw Error('Task not created')
         return res.status(201).json(createdTask)

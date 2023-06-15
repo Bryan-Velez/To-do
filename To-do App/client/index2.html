@@ -10,23 +10,52 @@
 </head>
 <body>
 
+
+
     <header>
         <img class="checkbox" src="assests/Checkbox Logo.jpeg" alt="">
         <img class="title" src="assests/title.png" alt="Get it Done!">
         <img class="subtitle" src="assests/subtitle.png" alt="Get organized. Get things done.">
-        <!-- <button class="signUpButton">Sign Up</button> -->
     </header> 
 
+
+
     <div class="mainContainer" id="taskContainer">
-        <ul id="taskList">
-            <li><input type="checkbox" name="taskDone"><input class="task" id="task1" type="text"><button class="editBtn1">Edit</button><button class="delBtn1">Del</button></li>
-            <!-- <li><input type="checkbox" name="taskDone"><input class="task" id="task2" type="text"><button class="editBtn2">Edit</button><button class="delBtn2">Del</button></li>
-            <li><input type="checkbox" name="taskDone"><input class="task" id="task3" type="text"><button class="editBtn3">Edit</button><button class="delBtn3">Del</button></li>
-            <li><input type="checkbox" name="taskDone"><input class="task" id="task4" type="text"><button class="editBtn4">Edit</button><button class="delBtn4">Del</button></li>
-            <li><input type="checkbox" name="taskDone"><input class="task" id="task5" type="text"><button class="editBtn5">Edit</button><button class="delBtn5">Del</button></li> -->
-        </ul>
-        <button id="addTaskBtn">+</button>
+        <h1 id="getUsers"></h1>
+        
+        <div class="taskInputContainer">
+            <input class="task" id="taskInput" type="text">
+            <button id="addTaskBtn">+</button>
+        </div>
+       
+        <ul id="taskList"></ul>
+   
     </div>
 
+
+
+    <div id="subtaskModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Things to Get Done!</h2>
+            <div class="subtaskList"></div>
+        </div>
+    </div>
+
+
+
 </body>
+
+   
 </html>
+
+
+<!-- <ul id="taskList">
+            
+            <li></li>
+            
+            <li><input type="checkbox" name="taskDone"><input class="task" id="task2" type="text"><button class="editBtn2">Edit</button><button class="delBtn2">Del</button></li>
+            <li><input type="checkbox" name="taskDone"><input class="task" id="task3" type="text"><button class="editBtn3">Edit</button><button class="delBtn3">Del</button></li>
+            <li><input type="checkbox" name="taskDone"><input class="task" id="task4" type="text"><button class="editBtn4">Edit</button><button class="delBtn4">Del</button></li>
+            <li><input type="checkbox" name="taskDone"><input class="task" id="task5" type="text"><button class="editBtn5">Edit</button><button class="delBtn5">Del</button></li>
+        </ul> -->
