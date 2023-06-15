@@ -22,7 +22,7 @@ const createUser = async (req, res) => {
     console.log(req.query)
 
     try {
-        const user = await new User(req.query)
+        const user = await new User(req.body)
         await user.save()
         if(!user) throw Error('User not created')
         return res.status(201).json(user)

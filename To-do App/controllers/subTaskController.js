@@ -20,7 +20,7 @@ const getSubtaskById = async (req,res) => {
 
 const createSubtask= async (req, res) => {
     try {
-        const subtask = await new Subtask(req.query)
+        const subtask = await new Subtask(req.body)
         await subtask.save()
         if(!subtask) throw Error('Subtask not created')
         return res.status(201).json(subtask)
