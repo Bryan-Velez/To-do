@@ -48,6 +48,7 @@ const deleteTask = async (req, res) => {
     try { 
         const { id } = req.params
         const deletedTask = await Task.findByIdAndDelete(id)
+        console.log(req.params)
         if(!deletedTask) throw Error('Task not deleted')
         res.status(200).json(deletedTask)
     } catch (e) {
@@ -55,6 +56,7 @@ const deleteTask = async (req, res) => {
         res.status(500).send('Taks not deleted')
     }
 }
+
 
 module.exports = {
     getTasks,

@@ -6,7 +6,7 @@ const taskSchema = new Schema(
         name: {type: String, required: true},
         dueDate: {type: String, required: false},
         isCompleted: {type: Boolean, required: false},
-        nameOfUser: {type: Schema.Types.ObjectId, ref: 'User', required: false}
+        nameOfUser: {type: Schema.Types.ObjectId, ref: 'User', required: true}
     },
     {timestamps: true}
 )

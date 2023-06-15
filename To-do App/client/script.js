@@ -2,7 +2,7 @@
 
 const addTask = document.getElementById('addTaskBtn')
 const editTask = document.querySelector('.editBtn')
-const deleteTask = document.querySelector('.delBtn')
+
 const taskList = document.getElementById('taskList')
 const taskInput = document.querySelector('#taskInput')
 
@@ -30,7 +30,7 @@ getUserData()
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Grabbing and setting task Data from DB
+//Getting and setting task Data from DB
 
 
 // const getTaskData = async () => {
@@ -65,7 +65,7 @@ const getTaskData = async () => {
         const response = await axios.get('http://localhost:3001/tasks')
         const tasks = response.data
         console.log(tasks)
-        tasks.forEach(task => {
+        tasks.forEach((task) => {
             renderTask(task)
         })  
     } catch (e) {
@@ -73,12 +73,15 @@ const getTaskData = async () => {
     }
 }
 
+
+
+
+
 const renderTask = (task, newTask) => {
     const taskLine = document.createElement('li')
     taskLine.className = 'taskLine'
     taskLine.textContent = task.name
-    // taskLine.textContent = newTask.value
-    
+    taskLine.setAttribute('taskData-id', task._id)    
 
     const checkbox = document.createElement('input')
     checkbox.type = 'checkbox'
@@ -93,7 +96,10 @@ const renderTask = (task, newTask) => {
     const deleteButton = document.createElement('button')
     deleteButton.className = 'delBtn'
     deleteButton.textContent = 'Del'
-
+    deleteButton.addEventListener('click', () => {
+        const taskId = taskLine.getAttribute('taskData-id')
+        deleteTask(taskId)
+      })
     taskLine.appendChild(deleteButton)
 
     taskList.appendChild(taskLine)
@@ -104,13 +110,13 @@ getTaskData()
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Creating tasks
+// Creating Tasks
 
 addTask.addEventListener('click', async() => {
     const taskName = taskInput.value
     console.log(taskName)
     try {
-        const response = await axios.post('http://localhost:3001/tasks', { name: taskName})
+        const response = await axios.post('http://localhost:3001/tasks', { name: taskName, nameOfUser: "6487b02ca4fa6faa57208fd5", isCompleted: false })
         const newTask = response.data
         taskLine = renderTask(newTask)
         taskList.appendChild(newTask)
@@ -120,34 +126,25 @@ addTask.addEventListener('click', async() => {
         console.log('Error:', e.message)
     }
     
-    
 })
 
-
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Grabbing Subtask Data from DB
+// Deleting Tasks
 
-
-// const getSubtaskData = async () => {
-//     try {
-//         const response = await axios.get('http://localhost:3001/subtasks')
-//         const subtasks = response.data
-//         console.log(subtasks)
-//         const getSubtasks = subtasks.map(subtask => {
-//             return `<li>${subtask.name}</li>`
-//         }).join('')
-//         document.getElementById('getSubtasks').innerHTML = getSubtasks
-//     } catch (e) {
-//         console.log('Error:', e.message)
-//     }
-// }
-
-// getSubtaskData()
-
-
-
+const deleteTask = async (taskId) => {
+    // const taskId =
+    try {
+        await axios.delete(`http://localhost:3001/tasks/${taskId}`)
+        const taskLine = document.querySelector(`li[taskData-id="${taskId}"]`)
+        
+        if (taskLine) {
+            taskLine.remove()
+        }
+    } catch (e) {
+        console.log('Error:', e.message)
+    }
+    console.log(`${taskId}`)
+}
 
 
 
@@ -155,13 +152,13 @@ addTask.addEventListener('click', async() => {
 //Grabbing and displaying Subtask in Modal 
 
 
-taskList.addEventListener('click', (event) => {
-    const clickedTask = event.target.closest()
-    if (!clickedTask) return
+// taskList.addEventListener('click', (event) => {
+//     const clickedTask = event.target.closest()
+//     if (!clickedTask) return
 
-    const taskId = clickedTask.dataset.taskId
-    displayModal(taskId)
-})
+//     const taskId = clickedTask.dataset.taskId
+//     displayModal(taskId)
+// })
 
 const displayModal = async (taskId) => {
 
@@ -193,6 +190,28 @@ const displayModal = async (taskId) => {
         console.log('Error:', e.message)
     }
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Grabbing Subtask Data from DB
+
+
+// const getSubtaskData = async () => {
+//     try {
+//         const response = await axios.get('http://localhost:3001/subtasks')
+//         const subtasks = response.data
+//         console.log(subtasks)
+//         const getSubtasks = subtasks.map(subtask => {
+//             return `<li>${subtask.name}</li>`
+//         }).join('')
+//         document.getElementById('getSubtasks').innerHTML = getSubtasks
+//     } catch (e) {
+//         console.log('Error:', e.message)
+//     }
+// }
+
+// getSubtaskData()
+
+
 
 
 
