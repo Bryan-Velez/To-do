@@ -118,8 +118,8 @@ addTask.addEventListener('click', async() => {
     try {
         const response = await axios.post('http://localhost:3001/tasks', { name: taskName, nameOfUser: "6487b02ca4fa6faa57208fd5", isCompleted: false })
         const newTask = response.data
-        taskLine = renderTask(newTask)
-        taskList.appendChild(newTask)
+        const taskLine = renderTask(newTask)
+        taskList.appendChild(taskLine)
         console.log(newTask)
         taskInput.value = ''
     } catch (e) {
@@ -152,13 +152,13 @@ const deleteTask = async (taskId) => {
 //Grabbing and displaying Subtask in Modal 
 
 
-// taskList.addEventListener('click', (event) => {
-//     const clickedTask = event.target.closest()
-//     if (!clickedTask) return
+taskList.addEventListener('click', (event) => {
+    const clickedTask = event.target.closest('li')
+    if (!clickedTask) return
 
-//     const taskId = clickedTask.dataset.taskId
-//     displayModal(taskId)
-// })
+    const taskId = clickedTask.dataset.taskId
+    displayModal(taskId)
+})
 
 const displayModal = async (taskId) => {
 
@@ -175,12 +175,12 @@ const displayModal = async (taskId) => {
         
         window.onclick = function(event) {
             if (event.target == modal) {
-              modal.style.display = "none";
+              modal.style.display = "none"
             }
         }
 
         modal.addEventListener('click',(event) => {
-            if (e.target.classList.contains('close') || event.target === modal) {
+            if (event.target.classList.contains('close') || event.target === modal) {
                 modal.style.display = 'none'
             }
         })
@@ -190,6 +190,18 @@ const displayModal = async (taskId) => {
         console.log('Error:', e.message)
     }
 }
+
+
+// cartButton.onclick = function() {
+//     modal.style.display = 'block'
+//     console.log('working')
+//     cartInformation()
+// }
+
+// closeSpan.onclick = function() {
+//     modal.style.display = 'none'
+// }
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Grabbing Subtask Data from DB
