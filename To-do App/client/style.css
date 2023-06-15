@@ -64,8 +64,6 @@ h1 {
     /* margin: 0 30px; */
     text-shadow: -5px -5px #787878;
     background-color: 787878;
-    border-bottom: #1b32ffc5 solid 3px;
-
 }
 
 
@@ -124,6 +122,11 @@ input[type=text], input[type=password] {
     width: 100%;
 }
   
+#addTaskBtn {
+  height: 30px;
+  width: 75%;
+  justify-self: center;
+}
 .taskLine {
   display: flex;
   flex-direction: row;

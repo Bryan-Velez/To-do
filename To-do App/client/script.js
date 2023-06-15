@@ -93,11 +93,9 @@ const renderTask = (task, newTask) => {
     subtaskButton.textContent = 'Subtasks'
     subtaskButton.addEventListener('click', (event) => {
         const taskId = taskLine.getAttribute('taskData-id')
-        // const clickedTask = event.target.closest('li')
-        // if (!clickedTask) return
-    
-        // const taskId = clickedTask.dataset.taskId
-        console.log(taskId)
+        
+       
+            console.log(taskId)
     
         displayModal(taskId)
     })
@@ -205,11 +203,11 @@ getSubtaskData()
 const displayModal = async (taskId) => {
 
     try {
-        const response = await axios.get(`http://localhost:3001/subtasks/${taskId}`)
+        const response = await axios.get(`http://localhost:3001/subtasks/tasks/${taskId}`)
         const subtasks = response.data
-        console.log(taskId)
+        console.log(subtasks)
         
-        const subtaskList = Array.isArray(subtasks) ? subtasks.map(subtask => `<li>${subtask.name}</li>`).join(''):''
+        const subtaskList = subtasks.map(subtask => `<li>${subtask.name}</li>`).join('')
         document.getElementById('subtaskList').innerHTML = subtaskList
 
         const modal = document.getElementById('subtaskModal')

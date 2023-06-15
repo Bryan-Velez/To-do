@@ -5,6 +5,8 @@ Router.get('/', subtaskController.getSubtasks)
 
 Router.get('/:id', subtaskController.getSubtaskById)
 
+Router.get('/tasks/:id', subtaskController.getSubtaskByTaskID)
+
 Router.post('/', subtaskController.createSubtask)
 
 Router.put('/:id', subtaskController.updateSubtask)

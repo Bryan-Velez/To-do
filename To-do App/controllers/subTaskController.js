@@ -18,6 +18,18 @@ const getSubtaskById = async (req,res) => {
     }
 }
 
+const getSubtaskByTaskID = async (req,res) => {
+    try{
+    const { id } = req.params
+    const subtask = await Subtask.find({nameOfTask: id})
+    if(!subtask) throw Error('Subtask not found')
+    res.json(subtask)
+    }catch (e){
+        console.log(e)
+        res.send('Subtask not found')
+    }
+}
+
 const createSubtask= async (req, res) => {
     try {
         const subtask = await new Subtask(req.body)
@@ -59,6 +71,7 @@ const deleteSubtask = async (req, res) => {
 module.exports = {
     getSubtasks,
     getSubtaskById,
+    getSubtaskByTaskID,
     createSubtask,
     updateSubtask,
     deleteSubtask
