@@ -9,7 +9,7 @@ const taskInput = document.querySelector('#taskInput')
 // const taskInput = 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Grabbing user Data from DB
+// Getting user Data from DB
 
 
 const getUserData = async () => {
@@ -29,8 +29,8 @@ const getUserData = async () => {
 getUserData()
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Getting and setting task Data from DB
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Getting and setting task Data from DB
 
 
 // const getTaskData = async () => {
@@ -88,6 +88,21 @@ const renderTask = (task, newTask) => {
     checkbox.name = 'taskFinished'
     taskLine.insertBefore(checkbox, taskLine.firstChild)
 
+    const subtaskButton = document.createElement('button')
+    subtaskButton.className = 'subtaskBtn'
+    subtaskButton.textContent = 'Subtasks'
+    subtaskButton.addEventListener('click', (event) => {
+        const taskId = taskLine.getAttribute('taskData-id')
+        // const clickedTask = event.target.closest('li')
+        // if (!clickedTask) return
+    
+        // const taskId = clickedTask.dataset.taskId
+        console.log(taskId)
+    
+        displayModal(taskId)
+    })
+    taskLine.appendChild(subtaskButton)
+
     const editButton = document.createElement('button')
     editButton.className = 'editBtn'
     editButton.textContent = 'Edit'
@@ -128,6 +143,13 @@ addTask.addEventListener('click', async() => {
     
 })
 
+taskInput.addEventListener("keyup",function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault()
+        document.getElementById("addTaskBtn").click()
+    }
+})
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Deleting Tasks
 
@@ -148,26 +170,46 @@ const deleteTask = async (taskId) => {
 
 
 
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Grabbing and displaying Subtask in Modal 
+//Grabbing Subtask Data from DB
 
 
-taskList.addEventListener('click', (event) => {
-    const clickedTask = event.target.closest('li')
-    if (!clickedTask) return
+const getSubtaskData = async () => {
+    try {
+        const response = await axios.get('http://localhost:3001/subtasks')
+        const subtasks = response.data
+        console.log(subtasks)
+        const getSubtasks = subtasks.map(subtask => {
+            return `<li>${subtask.name}</li>`
+        }).join('')
+        document.getElementById('getSubtasks').innerHTML = getSubtasks
+    } catch (e) {
+        console.log('Error:', e.message)
+    }
+}
 
-    const taskId = clickedTask.dataset.taskId
-    displayModal(taskId)
-})
+getSubtaskData()
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Getting and displaying Subtask in Modal 
+
+
+
 
 const displayModal = async (taskId) => {
 
     try {
         const response = await axios.get(`http://localhost:3001/subtasks/${taskId}`)
         const subtasks = response.data
-        console.log(subtasks)
-
-        const subtaskList = subtasks.map(subtask => `<li>${subtask.name}</li>`).join('')
+        console.log(taskId)
+        
+        const subtaskList = Array.isArray(subtasks) ? subtasks.map(subtask => `<li>${subtask.name}</li>`).join(''):''
         document.getElementById('subtaskList').innerHTML = subtaskList
 
         const modal = document.getElementById('subtaskModal')
@@ -184,47 +226,11 @@ const displayModal = async (taskId) => {
                 modal.style.display = 'none'
             }
         })
-
        
     } catch (e) {
         console.log('Error:', e.message)
     }
 }
-
-
-// cartButton.onclick = function() {
-//     modal.style.display = 'block'
-//     console.log('working')
-//     cartInformation()
-// }
-
-// closeSpan.onclick = function() {
-//     modal.style.display = 'none'
-// }
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Grabbing Subtask Data from DB
-
-
-// const getSubtaskData = async () => {
-//     try {
-//         const response = await axios.get('http://localhost:3001/subtasks')
-//         const subtasks = response.data
-//         console.log(subtasks)
-//         const getSubtasks = subtasks.map(subtask => {
-//             return `<li>${subtask.name}</li>`
-//         }).join('')
-//         document.getElementById('getSubtasks').innerHTML = getSubtasks
-//     } catch (e) {
-//         console.log('Error:', e.message)
-//     }
-// }
-
-// getSubtaskData()
-
-
-
 
 
 
