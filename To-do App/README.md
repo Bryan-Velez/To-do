@@ -2,6 +2,8 @@
 
 ## Get it Done!
 ![Title](client/assests/getItDoneTitle2.png)
+
+
 Get it Done! is a web application designed to help users efficiently manage their tasks and subtasks. Whether you're a busy professional, a student with multiple assignments, or simply someone who wants to stay organized, this app provides a comprehensive and simplified solution to streamline your task management process.
 
 ## Screenshot(s)
