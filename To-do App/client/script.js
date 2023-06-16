@@ -91,10 +91,9 @@ const renderTask = (task, newTask) => {
     const subtaskButton = document.createElement('button')
     subtaskButton.className = 'subtaskBtn'
     subtaskButton.textContent = 'Subtasks'
-    subtaskButton.addEventListener('click', (event) => {
+    subtaskButton.addEventListener('click', () => {
         const taskId = taskLine.getAttribute('taskData-id')
         
-       
             console.log(taskId)
     
         displayModal(taskId)
@@ -208,7 +207,10 @@ const displayModal = async (taskId) => {
         console.log(subtasks)
         
         const subtaskList = subtasks.map(subtask => `<li>${subtask.name}</li>`).join('')
-        document.getElementById('subtaskList').innerHTML = subtaskList
+        const subtaskUL = document.getElementById('subtaskList')
+        subtaskUL.innerHTML = subtaskList
+        console.log(subtaskUL)
+
 
         const modal = document.getElementById('subtaskModal')
         modal.style.display = 'block'
