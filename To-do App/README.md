@@ -21,7 +21,6 @@ Get it Done! is a web application designed to help users efficiently manage thei
 - Axios
 
 ## Getting Started
-- Deployed App: [Link to Deployed App](https://your-deployed-app-url.com)
 - Trello Board: [Link to Trello Board](https://https://trello.com/b/CFpgX3uL/to-do-list-app-development-trello-board-url.com)
 - Figma Wireframe: [Link to Figma](https://www.figma.com/file/hRbu6KQc2KmbJLiAquOdli/Untitled?type=design&node-id=0%3A1&t=4UD2uIKQMyYzSOHr-1)
 
